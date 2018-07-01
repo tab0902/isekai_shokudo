@@ -1,0 +1,15 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+/isekai_shokudo/static/
+/isekai_shokudo/media/*
+!/isekai_shokudo/media/img/
+/isekai_shokudo/media/img/*
+!/isekai_shokudo/media/img/post/
+/isekai_shokudo/media/img/post/*
+!/isekai_shokudo/media/img/post/beef-stew.jpg
+!/isekai_shokudo/media/img/post/ebi-fry.jpg
+!/isekai_shokudo/media/img/post/katsu-don.jpg

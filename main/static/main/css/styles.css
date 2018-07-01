@@ -1,0 +1,107 @@
+#hamburger {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+#hamburger a {
+  color: tomato;
+}
+h3 {
+  color: tomato;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+a .price {
+  color: #333;
+}
+#menus {
+  margin-top: 10px;
+}
+#menu {
+  background-color: #FFEEEE;
+  /* background-color: #FFEEDD; */
+  border: 1px solid #D0D0D0;
+  border-radius: 5px;
+  z-index: 150;
+}
+#drawer {
+  display: none;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+  top: 10%;
+  bottom: 10%;
+  height: auto;
+  position: fixed;
+  z-index: 300;
+  background-color: #eee;
+  filter:alpha(opacity=90);
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+  border-radius: 30px;
+  padding: 5px;
+}
+#drawer-line {
+  display: none;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+  top: 20%;
+  height: auto;
+  position: fixed;
+  z-index: 300;
+  background-color: #eee;
+  filter:alpha(opacity=90);
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+}
+#dummy {
+  display: none;
+  right: 0;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 200;
+  background-color: #111;
+  filter:alpha(opacity=50);
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+}
+#cross {
+  display: none;
+  right: 5px;
+  top: 5px;
+  position: fixed;
+  z-index: 300;
+  border-radius: 10px;
+  color: tomato;
+}
+#dummy-line {
+  display: none;
+  right: 0;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 200;
+  background-color: #111;
+  filter:alpha(opacity=50);
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+}
+#cross-line {
+  display: none;
+  right: 5px;
+  top: 5px;
+  position: fixed;
+  z-index: 300;
+  border-radius: 10px;
+  color: tomato;
+}
+.sticky {
+  position: sticky;
+  -moz-position: sticky;
+}

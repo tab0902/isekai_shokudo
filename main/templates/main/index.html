@@ -1,0 +1,105 @@
+{% extends 'main/base.html' %}
+{% block title %}異世界食堂{% endblock %}
+{% load static %}
+{% block content %}
+<div class="grid-container fluid">
+  <div class="grid-x">
+    <div class="cell small-6 medium-5 large-4">
+      <a href="http://isekai-shokudo.com/">
+        <img src="{% static 'main/img/isekai-shokudou.png' %}" style="width:100%">
+      </a>
+    </div>
+  </div>
+</div>
+<div id="hamburger">
+  <p class="text-center tab"><a href="">
+    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+  </a></p>
+</div>
+<div class="grid-container fluid">
+
+  <div id="menus" class="grid-x grid-padding-x grid-margin-x grid-margin-y">
+    {% for post, image in zip %}
+    <div id="menu" class="small-6 medium-4 cell menu-{{ post.uuid }}">
+      <a href="">
+        <h3 class="text-center">{{ post.title }}</h3>
+        <img style="width:100%;" src="{{ image.image_path.url }}">
+        <p class="price text-right">--{{ post.price }}円</p>
+        <p class="omit">{{ post.description|truncatechars:15 }}</p>
+      </a>
+    </div>
+
+    <div id="drawer" class="drawer-{{ post.uuid }}">
+      <div style="width:100%;">
+        <h3 class="text-center">{{ post.title }}</h3>
+        <img src="{{ image.image_path.url }}" style="width:100%">
+        <p class="text-right">--{{ post.price }}円</p>
+        <p class="omit">{{ post.description }}</p>
+      </div>
+    </div>
+
+    {% if post.uuid != null %}
+    <script>
+    $(function() {
+      // var h = $(window).height();
+      $('#dummy').css('height', 99999);
+      $(document).on("click", "#menu.menu-{{ post.uuid }}", function () {
+        $('#dummy').fadeIn();
+        $('#cross').fadeIn();
+        $('#drawer.drawer-{{ post.uuid }}').fadeIn();
+        $('#page').addClass('sticky');
+        return false;
+      });
+      $('#dummy, #cross').on('click', function() {
+        $('#dummy, #cross').fadeOut();
+        $('#drawer.drawer-{{ post.uuid }}').fadeOut();
+        $('.container').removeClass('sticky');
+        return false;
+      });
+    });
+    </script>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<div id="drawer-line">
+  <div style="width:100%;">
+    <img src="{% static 'main/img/qr.png' %}" style="width:100%">
+  </div>
+</div>
+
+<div id="dummy">
+</div>
+
+<div id="dummy-line">
+</div>
+
+<div id="cross" href="#">
+  <i class="fa fa-times fa-3x" aria-hidden="true"></i>
+</div>
+
+<div id="cross-line" href="#">
+  <i class="fa fa-times fa-3x" aria-hidden="true"></i>
+</div>
+
+<script>
+$(function() {
+  // var h = $(window).height();
+  $('#dummy-line').css('height', 99999);
+  $('#hamburger').on('click', function() {
+    $('#dummy-line').fadeIn();
+    $('#cross-line').fadeIn();
+    $('#drawer-line').animate({height: 'toggle'});
+    $('#page').addClass('sticky');
+    return false;
+  });
+  $('#dummy-line, #cross-line').on('click', function() {
+    $('#dummy-line, #cross-line').fadeOut();
+    $('#drawer-line').animate({height: 'toggle'});
+    $('.container').removeClass('sticky');
+    return false;
+  });
+});
+</script>
+{% endblock %}
