@@ -3,6 +3,7 @@ import logging
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.conf import settings
 from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from linebot import LineBotApi, WebhookParser
@@ -263,12 +264,10 @@ def callback(request):
                         if post.status == 4:
                             try:
                                 message_content = line_bot_api.get_message_content(event.message.id)
-                                path = os.path.join(settings.MEDIA_ROOT, 'img/post/')
-                                with open(path + event.message.id + '.jpg', 'wb') as fd:
+                                with NamedTemporaryFile(mode='w+b') as f:
                                     for chunk in message_content.iter_content():
-                                        f = File(fd)
                                         f.write(chunk)
-                                post.image_path = 'img/post/' + event.message.id + '.jpg'
+                                    post.image_path.save(event.message.id + '.jpg', File(f), save=True)
                                 post.status = 5
                                 post.save()
                             except:
