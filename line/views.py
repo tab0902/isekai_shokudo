@@ -1,5 +1,6 @@
 import os
 import logging
+import traceback
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.conf import settings
 from django.core.files import File
@@ -271,6 +272,7 @@ def callback(request):
                                 post.status = 5
                                 post.save()
                             except:
+                                traceback.print_exc()
                                 try:
                                     line_bot_api.reply_message(
                                         event.reply_token,
